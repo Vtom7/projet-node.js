@@ -20,7 +20,7 @@ app.get('/hello', (req, res) => {
 })
 
 /* =========================
-   GET - TOUS LES QUIZ
+   GET
 ========================= */
 
 app.get('/quiz', async (req, res) => {
@@ -32,6 +32,16 @@ app.get('/quiz/:id', async (req, res) => {
   const quiz = await Quiz.findByPk(req.params.id);
   if (!quiz) return res.status(404).send('Quiz not found');
   res.json(quiz);
+});
+
+/* =========================
+   POST
+========================= */
+
+app.post('/quiz', async (req, res) => {
+  const { titre } = req.body;
+  const quiz = await Quiz.create({ titre });
+  res.status(201).json(quiz);
 });
 
 /* =========================
