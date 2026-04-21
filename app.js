@@ -24,76 +24,15 @@ app.get('/hello', (req, res) => {
 ========================= */
 
 app.get('/quiz', async (req, res) => {
-  try {
-    const quiz = await Quiz.findAll()
-    res.json(quiz)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({
-      message: "Erreur lors de la récupération des quiz"
-    })
-  }
-})
-
-/* =========================
-   GET - QUIZ AVEC RELATIONS
-========================= */
-
-app.get('/quiz-complet', async (req, res) => {
-  try {
-    const quiz = await Quiz.findAll({
-      include: [
-        {
-          model: Question,
-          include: [Reponse]
-        },
-        {
-          model: Resultat
-        }
-      ]
-    })
-
-    res.json(quiz)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({
-      message: "Erreur lors de la récupération des données"
-    })
-  }
-})
-
-/* =========================
-   GET - UN QUIZ PAR ID
-========================= */
+  const quiz = await Quiz.findAll();
+  res.json(quiz);
+});
 
 app.get('/quiz/:id', async (req, res) => {
-  try {
-    const quiz = await Quiz.findByPk(req.params.id, {
-      include: [
-        {
-          model: Question,
-          include: [Reponse]
-        },
-        {
-          model: Resultat
-        }
-      ]
-    })
-
-    if (!quiz) {
-      return res.status(404).json({
-        message: "Quiz non trouvé"
-      })
-    }
-
-    res.json(quiz)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({
-      message: "Erreur serveur"
-    })
-  }
-})
+  const quiz = await Quiz.findByPk(req.params.id);
+  if (!quiz) return res.status(404).send('Quiz not found');
+  res.json(quiz);
+});
 
 /* =========================
    LANCEMENT SERVEUR
