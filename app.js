@@ -4,7 +4,7 @@ const app = express()
 const cors = require("cors");
 app.use(cors());
 
-const PORT = 3000
+const PORT = 8100
 
 // Middleware pour lire le JSON
 app.use(express.json())
