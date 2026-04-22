@@ -34,6 +34,18 @@ app.get('/quiz/:id', async (req, res) => {
   res.json(quiz);
 });
 
+app.get('/questions', async (req, res) => {
+  const questions = await Question.findAll();
+  res.json(questions);
+});
+
+app.get('/questions/:id', async (req, res) => {
+  const question = await Question.findByPk(req.params.id);
+  if (!question) return res.status(404).send('Question not found');
+  res.json(question);
+});
+
+
 /* =========================
    POST
 ========================= */
