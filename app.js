@@ -45,6 +45,17 @@ app.get('/questions/:id', async (req, res) => {
   res.json(question);
 });
 
+app.get('/reponses', async (req, res) => {
+  const reponses = await Reponse.findAll();
+  res.json(reponses);
+});
+
+app.get('/reponses/:id', async (req, res) => {
+  const reponse = await Reponse.findByPk(req.params.id);
+  if (!reponse) return res.status(404).send('Reponse not found');
+  res.json(reponse);
+});
+
 
 /* =========================
    POST
