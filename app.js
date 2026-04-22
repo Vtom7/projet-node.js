@@ -78,6 +78,17 @@ app.post('/questions', async (req, res) => {
   res.status(201).json(question);
 });
 
+app.post('/reponses', async (req, res) => {
+  const { reponse, id_question } = req.body;
+  // Vérifier que la question existe
+  const question = await Question.findByPk(id_question);
+  if (!question) {
+    return res.status(404).send('Question not found');
+  }
+  const newReponse = await Reponse.create({ reponse, id_question });
+  res.status(201).json(newReponse);
+});
+
 
 /* =========================
    PUT
