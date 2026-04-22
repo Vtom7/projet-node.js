@@ -112,6 +112,15 @@ app.put('/questions/:id', async (req, res) => {
   res.json(question);
 });
 
+app.put('/reponses/:id', async (req, res) => {
+  const { reponse } = req.body;
+  const reponseDB = await Reponse.findByPk(req.params.id);
+  if (!reponseDB) return res.status(404).send('Reponse not found');
+  reponseDB.reponse = reponse;
+  await reponseDB.save();
+  res.json(reponseDB);
+});
+
 
 /* =========================
    DELETE
