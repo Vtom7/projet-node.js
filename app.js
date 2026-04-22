@@ -140,6 +140,13 @@ app.delete('/questions/:id', async (req, res) => {
   res.status(204).send();
 });
 
+app.delete('/reponses/:id', async (req, res) => {
+  const reponse = await Reponse.findByPk(req.params.id);
+  if (!reponse) return res.status(404).send('Reponse not found');
+  await reponse.destroy();
+  res.status(204).send();
+});
+
 
 /* =========================
    LANCEMENT SERVEUR
