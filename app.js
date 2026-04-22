@@ -102,6 +102,13 @@ app.delete('/quiz/:id', async (req, res) => {
   res.status(204).send();
 });
 
+app.delete('/questions/:id', async (req, res) => {
+  const question = await Question.findByPk(req.params.id);
+  if (!question) return res.status(404).send('Question not found');
+  await question.destroy();
+  res.status(204).send();
+});
+
 
 /* =========================
    LANCEMENT SERVEUR
