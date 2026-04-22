@@ -81,6 +81,16 @@ app.put('/quiz/:id', async (req, res) => {
   res.json(quiz);
 });
 
+app.put('/questions/:id', async (req, res) => {
+  const { contenu } = req.body;
+  const question = await Question.findByPk(req.params.id);
+  if (!question) return res.status(404).send('Question not found');
+  question.contenu = contenu;
+  await question.save();
+  res.json(question);
+});
+
+
 /* =========================
    DELETE
 ========================= */
