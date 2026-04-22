@@ -56,6 +56,18 @@ app.post('/quiz', async (req, res) => {
   res.status(201).json(quiz);
 });
 
+app.post('/questions', async (req, res) => {
+  const { contenu, id_quiz } = req.body;
+  // Vérifier que le quiz existe
+  const quiz = await Quiz.findByPk(id_quiz);
+  if (!quiz) {
+    return res.status(404).send('Quiz not found');
+  }
+  const question = await Question.create({ contenu, id_quiz });
+  res.status(201).json(question);
+});
+
+
 /* =========================
    PUT
 ========================= */
