@@ -58,6 +58,18 @@ app.put('/quiz/:id', async (req, res) => {
 });
 
 /* =========================
+   DELETE
+========================= */
+
+app.delete('/quiz/:id', async (req, res) => {
+  const quiz = await Quiz.findByPk(req.params.id);
+  if (!quiz) return res.status(404).send('Quiz not found');
+  await quiz.destroy();
+  res.status(204).send();
+});
+
+
+/* =========================
    LANCEMENT SERVEUR
 ========================= */
 
