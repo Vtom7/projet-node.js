@@ -25,6 +25,7 @@ curl -X DELETE "http://localhost:8100/quiz/2"
 
 # Table questions
 
+### Pour le local
 ```
 curl -X GET "http://localhost:3000/questions"
 curl -X GET "http://localhost:3000/questions/1"
@@ -42,6 +43,7 @@ curl -X DELETE "http://localhost:8100/questions/2"
 
 # Table reponses
 
+### Pour le local
 ```
 curl -X GET "http://localhost:3000/reponses"
 curl -X GET "http://localhost:3000/reponses/1"
