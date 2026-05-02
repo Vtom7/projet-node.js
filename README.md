@@ -10,8 +10,10 @@ Commandes pour effectuer une migration sur la base de données d'Alwaysdata :
 - `npx sequelize-cli migration:generate --name create-quiz` (migration pour Quiz)
 - `npx sequelize-cli migration:generate --name create-question` (migration pour Question)
 - `npx sequelize-cli migration:generate --name create-reponse` (migration pour Reponse)
-- `npx sequelize-cli db:migrate --env production` (Lancer la migration sur Alwaysdata)
+- `npx sequelize-cli migration:generate --name add-correct-to-reponses` (migration Reponse - correct)
+- `npx sequelize-cli db:migrate --env production` et `npx sequelize-cli db:migrate` (Lancer la migration sur Alwaysdata)
 - `SELECT * FROM SequelizeMeta;` (Vérifier dans la base de données)
+- `DESCRIBE Reponses;` (Vérifier dans la table Reponse)
 
 
 # Table quiz
