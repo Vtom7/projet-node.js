@@ -38,8 +38,13 @@ const Reponse = sequelize.define('Reponse', {
     type: DataTypes.STRING(255),
     allowNull: false
   },
+  correct: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
   id_question: {
-    type: DataTypes.INTEGER, // ⚠️ DOIT matcher Quiz.id
+    type: DataTypes.INTEGER,
     allowNull: false,
     references: {
       model: Question,
@@ -49,7 +54,6 @@ const Reponse = sequelize.define('Reponse', {
     onUpdate: 'CASCADE'
   }
 });
-
 
 /* =========================
    RELATIONS
@@ -87,10 +91,10 @@ module.exports = {
    SYNC DB
 ========================= */
 
-sequelize.sync()
-  .then(() => {
-    console.log('Database & tables created!');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+//sequelize.sync()
+//  .then(() => {
+//    console.log('Database & tables created!');
+//  })
+//  .catch(err => {
+//    console.error('Unable to connect to the database:', err);
+//  });
