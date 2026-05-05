@@ -14,6 +14,8 @@ Commandes pour effectuer une migration sur la base de données d'Alwaysdata :
 - `npx sequelize-cli db:migrate --env production` et `npx sequelize-cli db:migrate` (Lancer la migration sur Alwaysdata)
 - `SELECT * FROM SequelizeMeta;` (Vérifier dans la base de données)
 - `DESCRIBE Reponses;` (Vérifier dans la table Reponse)
+- `npm install jsonwebtoken bcryptjs` (Installer JWT pour sécuriser l'API)
+- `npx sequelize-cli model:generate --name User --attributes email:string,password:string` (migration pour User) + `npx sequelize-cli db:migrate` (sans passer par MySQL)
 
 
 # Table quiz
