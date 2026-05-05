@@ -55,6 +55,18 @@ const Reponse = sequelize.define('Reponse', {
   }
 });
 
+const User = sequelize.define('User', {
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+});
+
 /* =========================
    RELATIONS
 ========================= */
@@ -84,17 +96,18 @@ module.exports = {
   sequelize,
   Quiz,
   Question,
-  Reponse
+  Reponse,
+  User
 };
 
 /* =========================
    SYNC DB
 ========================= */
 
-//sequelize.sync()
-//  .then(() => {
-//    console.log('Database & tables created!');
-//  })
-//  .catch(err => {
-//    console.error('Unable to connect to the database:', err);
-//  });
+// sequelize.sync()
+//   .then(() => {
+//     console.log('Database & tables created!');
+//   })
+//   .catch(err => {
+//     console.error('Unable to connect to the database:', err);
+//   });
